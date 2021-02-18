@@ -23,11 +23,18 @@ function resize() {
 const stage = new PIXI.Container();
 
 const texture = PIXI.Texture.from("../assets/ui/info_plate_big.png");
+const lights = PIXI.Texture.from("../assets/ui/rays.png");
 const img = new PIXI.Sprite(texture);
+const bg_lights = new PIXI.Sprite(lights);
 
 img.anchor.x = 0.5;
 img.anchor.y = 0.5;
 stage.addChild(img);
+
+bg_lights.anchor.x = 0.5;
+bg_lights.anchor.y = 0.5;
+bg_lights.anchor.z = -0.5;
+stage.addChild(bg_lights);
 
 const ticker = new PIXI.Ticker();
 ticker.add(animate);
@@ -36,5 +43,8 @@ ticker.start();
 function animate() {
   img.x = renderer.screen.width / 2;
   img.y = renderer.screen.height / 2;
+  bg_lights.x = renderer.screen.width / 2;
+  bg_lights.y = renderer.screen.height / 2;
   renderer.render(stage);
+  bg_lights.rotation += 0.006;
 }
