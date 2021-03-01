@@ -1,1 +1,1 @@
-# pixi-test
+# pixi-easy-game
